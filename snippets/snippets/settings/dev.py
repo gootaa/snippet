@@ -10,10 +10,10 @@ DATABASES = {
         'PASSWORD': 'ammg1998',
         'HOST': 'localhost',
         'PORT': '5432',
+	}
 }
 
 
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-    '/var/www/static/',
+	os.path.join(BASE_DIR, "static"),
 ]
