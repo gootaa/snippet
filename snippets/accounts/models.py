@@ -21,7 +21,6 @@ class Profile(models.Model):
 	EXPOSURE = (
 		('public','Public'),
 		('private','Private'),
-		('visible_for','Visible for: '),
 	)
 
 	user = models.OneToOneField(User, related_name='profile')
