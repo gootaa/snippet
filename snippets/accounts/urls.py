@@ -9,7 +9,6 @@ urlpatterns = [
 		auth_views.LoginView.as_view(redirect_authenticated_user=True),
 		name='login'),
 	url(r'^logout/$', auth_views.logout_then_login, name='logout'),
-	url(r'^profile-settings/$', app_views.profile_settings, name='profile_settings'),
 	url(r'^account-settings/$', app_views.account_settings, name='account_settings'),
 	url(r'^change-email/$', app_views.change_email, name='change_email'),
 	url(r'^change-password/$', app_views.change_password, name='change_password'),
