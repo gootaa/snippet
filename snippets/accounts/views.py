@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse #To be removed later
 from django.contrib.auth import authenticate, login
 from .forms import RegistrationForm, EmailForm
 from django.contrib.auth.decorators import login_required
@@ -10,9 +9,10 @@ from django.contrib.auth import update_session_auth_hash
 @login_required
 def home(request):
 	"""
-	Placeholder view
+	dispalys the authenticated user's list of 
+	his/her snippets with edit or delete option
 	"""
-	return HttpResponse('Hello, this is the home page')
+	return render(request, 'home.html')
 
 def register(request):
 	"""
