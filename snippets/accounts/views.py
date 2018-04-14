@@ -1,8 +1,6 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse #To be removed later
 from django.contrib.auth import authenticate, login
-from .models import Profile
-from .forms import RegistrationForm, ProfileForm, EmailForm
+from .forms import RegistrationForm, EmailForm
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.forms import PasswordChangeForm
@@ -11,15 +9,15 @@ from django.contrib.auth import update_session_auth_hash
 @login_required
 def home(request):
 	"""
-	Placeholder view
+	dispalys the authenticated user's list of 
+	his/her snippets with edit or delete option
 	"""
-	return HttpResponse('Hello, this is the home page')
+	return render(request, 'home.html')
 
 def register(request):
 	"""
 	Handles RegistrationForm, login the new user,
-	creates profile for the new user, and redirects 
-	to home page
+	and redirects to home page
 	"""
 	if request.user.is_authenticated():
 		return redirect('home')
@@ -33,34 +31,10 @@ def register(request):
 			user = authenticate(username=username, password=password)
 			login(request, user)
 
-			profile = Profile()
-			profile.user = user
-			profile.save()
-
 			return redirect('home')
 	else:
 		form = RegistrationForm()
 	return render(request, 'register.html', {'form':form})
-
-
-@login_required
-def profile_settings(request):
-	"""
-	Handles ProfileForm and responds to user
-	using messages
-	"""
-	profile = request.user.profile
-	if request.method == 'POST':
-		form = ProfileForm(data=request.POST, instance=profile)
-		if form.is_valid():
-			form.save()
-			messages.success(request, 'Your profile was updated successfully!')
-			return redirect('profile_settings')
-		else:
-			messages.warning(request, 'Please enter valid data.')
-	else:
-		form = ProfileForm(instance=profile)
-	return render(request, 'profile-settings.html', {'form':form})
 
 
 @login_required
