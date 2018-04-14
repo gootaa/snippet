@@ -27,14 +27,12 @@
 			<p>Last time updated {{ snippet.time_updated }}</p>
 		</div>
 
+
+		{% if snippet.author == user %}
 		<!--// Snippet options -->
-		{% if user.is_authenticated %}
 		<div>
-			<a href="#">Clone</a>
-			{% if snippet.author == user %}
-			<a href="#">Edit</a>
-			<a href="#">Delete</a>
-			{% endif %}
+			<a href="{% url 'edit_snippet' snippet.id %}">Edit</a>
+			<a href="{% url 'delete_snippet' snippet.id %}">Delete</a>
 		</div>
 		{% endif %}
 

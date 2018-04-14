@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import SnippetForm
 from .models import Snippet
 from django.core.exceptions import PermissionDenied
+from django.contrib import messages
 
 
 @login_required
@@ -25,6 +26,37 @@ def snippet_detail(request, snippet_id):
 		return render(request, 'snippet-detail.html', {'snippet':snippet})
 	else:
 		raise PermissionDenied
+
+
+@login_required
+def edit_snippet(request, snippet_id):
+	snippet = get_object_or_404(Snippet, id=snippet_id)
+
+	if snippet.author == request.user:
+		if request.method == 'POST':
+			form = SnippetForm(instance=snippet, data=request.POST)
+			if form.is_valid():
+				form.save()
+				return redirect('snippet_detail', snippet_id=snippet.id)
+		else:
+			form = SnippetForm(instance=snippet)
+		return render(request, 'new-snippet.html', {'form':form})
+	else: 
+		raise PermissionDenied
+
+
+@login_required
+def delete_snippet(request, snippet_id):
+	snippet = get_object_or_404(Snippet, id=snippet_id)
+
+	if snippet.author == request.user:
+		snippet.delete()
+		messages.success(request, 'Your snippet was deleted successfully!')
+		return redirect('home')
+	else:
+		raise PermissionDenied
+
+
 
 
 

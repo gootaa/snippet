@@ -1,13 +1,13 @@
 {% extends "base.html" %}
 
 {% block title %}
-New Snippet
+Add Snippet
 {% endblock %}
 
 {% block content %}
 <!--// Snippet Form -->
 	<section>
-	  <h2>New Snippet</h2>
+	  <h2>Add Snippet</h2>
 	  <form method="post">
 	    {% csrf_token %}
 	    {{ form.as_p }}

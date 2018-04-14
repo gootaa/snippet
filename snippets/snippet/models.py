@@ -1,6 +1,7 @@
 from django.db import models
 from accounts.models import User
 from .languages import languages
+from django.core.urlresolvers import reverse
 
 
 class Snippet(models.Model):
@@ -22,6 +23,11 @@ class Snippet(models.Model):
 								choices=EXPOSURE,
 								default='public')
 
+	class Meta:
+		ordering = ('-time_updated',)
 
 	def __str__(self):
 		return self.title + ' by ' + self.author.username
+
+	def get_absolute_url(self):
+		return reverse('snippet_detail', args=[self.id,])
