@@ -1,18 +1,17 @@
 {% extends "base.html" %}
 
 {% block title %}
-Register
+New Snippet
 {% endblock %}
 
-
 {% block content %}
-<!--// Registration Form -->
+<!--// Snippet Form -->
 	<section>
-	  <h2>Register</h2>
+	  <h2>New Snippet</h2>
 	  <form method="post">
 	    {% csrf_token %}
 	    {{ form.as_p }}
-	    <button type="submit">Register</button>
+	    <button type="submit">Add</button>
 	  </form>
 	</section>
 {% endblock %}

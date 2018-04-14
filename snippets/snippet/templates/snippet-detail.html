@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+	{% if snippet.title %}
+	{{ snippet.title }}
+	{% else %}
+	Untitled | Snippet
+	{% endif %}
+{% endblock %}
+
+
+{% block content %}
+	<!--// Snippet -->
+	<section>
+		<!--// Snippet intro -->
+		<div>
+			<h2>
+				{% if snippet.title %}
+				snippet.title
+				{% else %}
+				Untitled
+				{% endif %}
+			</h2>
+			<p>By {{ snippet.author.username }}</p>
+			<p>Added on {{ snippet.time_added }}</p>
+			<p>Last time updated {{ snippet.time_updated }}</p>
+		</div>
+
+		<!--// Snippet options -->
+		{% if user.is_authenticated %}
+		<div>
+			<a href="#">Clone</a>
+			{% if snippet.author == user %}
+			<a href="#">Edit</a>
+			<a href="#">Delete</a>
+			{% endif %}
+		</div>
+		{% endif %}
+
+		<!--// The Code -->
+		<div>
+			<pre>
+				<code class="lang-{{ snippet.syntax_highlighting }}">
+					{{ snippet.raw_text }}
+				</code>
+			</pre>
+		</div>
+	</section>
+{% endblock %}
+
+
+{% block scripts %}
+		<script src="{% static 'scripts/prism.js' %}"></script>
+{% endblock %}

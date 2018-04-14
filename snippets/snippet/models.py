@@ -22,3 +22,6 @@ class Snippet(models.Model):
 								choices=EXPOSURE,
 								default='public')
 
+
+	def __str__(self):
+		return self.title + ' by ' + self.author.username
