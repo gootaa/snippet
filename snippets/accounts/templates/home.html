@@ -18,7 +18,7 @@ Home | My Snippets
 	{% endif %}
 
 	<!--// Snippets List -->
-	{% if user.snippets %}
+	{% if user.snippets.all %}
 	<ul>
 		{% for snippet in user.snippets.all %}
 		<li>
