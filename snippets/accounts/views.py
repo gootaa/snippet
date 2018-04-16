@@ -62,7 +62,7 @@ def change_email(request):
 			form.save()
 			messages.success(request, 'Your Email was updated successfully!')
 		else:
-			messages.warning(request, 'Please enter valid data.')
+			messages.error(request, 'Please enter valid data.')
 	return redirect('account_settings')
 
 @login_required
