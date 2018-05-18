@@ -1,0 +1,6 @@
+*.pyc
+.env
+.ini
+migrations/
+media/
+venv/
