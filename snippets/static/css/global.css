@@ -1,0 +1,188 @@
+/* Fonts
+---------------------------*/
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,700|Source+Code+Pro');
+
+/* Box Sizing Fix
+---------------------------*/
+*,
+*:before,
+*:after {
+	-webkit-box-sizing:border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+/* Global Styles
+---------------------------*/
+html, body {
+	height: 100%;
+	margin: 0;
+	font-family: 'Montserrat';
+}
+
+body {
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#87e0fd+0,53cbf1+40,05abe0+100;Blue+3D+%23+16 */
+	background: #87e0fd; /* Old browsers */
+	background: -moz-linear-gradient(left, #87e0fd 0%, #53cbf1 40%, #05abe0 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right, #87e0fd 0%,#53cbf1 40%,#05abe0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#87e0fd', endColorstr='#05abe0',GradientType=1 ); /* IE6-9 */
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+}
+
+
+.form-item {
+	display: grid;
+	grid-template-rows: repeat(auto-fit, auto);
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 10px;
+}
+
+.info {
+	max-width: 300px;
+}
+
+input {
+	border-radius: 4px;
+	border:none;
+	padding: 10px;
+}
+
+button {
+	background-color: #fff;
+	border-radius: 4px;
+	border: none;
+	box-shadow: 2px 2px 4px black;
+	padding: 10px;
+	font-weight: 700;
+	font-size: 1.1em;
+	max-width: 200px;
+}
+
+
+/* layout Styles
+---------------------------*/
+.page {
+	height: 100%;
+	display: grid;
+	grid-template-rows: auto 1fr auto;
+	padding: 2em;
+}
+
+main {
+	padding: 2em 0;
+}
+
+/* Header Styles
+---------------------------*/
+header {
+	text-transform: uppercase;
+	display: grid;
+	grid-template-columns: 1fr 40px;
+	color: #000;
+}
+
+#brand {
+	margin: 0;
+	font-family: 'Source Code Pro', monospace;
+	text-transform: capitalize;
+}
+
+
+
+#menu-icon {
+	width: 40px;
+}
+
+/* Navigation Styles
+---------------------------*/
+
+.active {
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 50%;
+	height: 100%;
+}
+
+nav ul {
+	display: none;
+	text-transform: uppercase;
+	font-size: .8em;
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #fff;
+}
+
+nav .wrapper {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	align-items: center;
+	align-content: space-between;
+	padding: 2em;
+}
+
+
+/* Footer Styles
+---------------------------*/
+footer {
+	text-align: center;
+}
+
+/* Login Styles
+---------------------------*/
+.login-form a {
+	display: block;
+	padding: 5px;
+}
+
+#github-btn {
+	padding: 15px;
+	border-radius: 4px;
+	background-color: #e9fcf3;
+	display: inline-block;
+}
+
+/* snippet Styles
+---------------------------*/
+.snippet {
+	max-width: 70vw;
+}
+
+.edit {
+	color: #0c86ad
+}
+
+.delete {
+	color: #cc0000;
+}
+
+.edit, .delete {
+	font-size: 1.2em;
+	padding: 0 10px;
+}
+
+/* my snippets Styles
+---------------------------*/
+.my-snippets {
+	list-style-type: none;
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-gap: 15px;
+	padding: 0;
+}
+
+.my-snippets li {
+	padding: 10px;
+	border-radius: 4px;
+	background-color: #f7ebeb;
+	display: grid;
+	grid-template-columns: 1fr auto auto;
+}
