@@ -19,7 +19,7 @@ Home | My Snippets
 
 	<!--// Snippets List -->
 	{% if user.snippets.all %}
-	<ul>
+	<ul class="my-snippets">
 		{% for snippet in user.snippets.all %}
 		<li>
 			<a href="{{ snippet.get_absolute_url }}">
@@ -29,8 +29,8 @@ Home | My Snippets
 				Untitled
 				{% endif %}
 			</a>
-			<a href="{% url 'edit_snippet' snippet.id %}">Edit</a>
-			<a href="{% url 'delete_snippet' snippet.id %}">Delete</a>
+			<a href="{% url 'edit_snippet' snippet.id %}" class="edit"><i class="fas fa-edit"></i></a>
+			<a href="{% url 'delete_snippet' snippet.id %}" class="delete"><i class="fas fa-trash-alt"></i></a>
 		</li>
 		{% endfor %}
 	</ul>

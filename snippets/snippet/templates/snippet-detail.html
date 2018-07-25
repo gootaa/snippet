@@ -12,7 +12,7 @@
 
 {% block content %}
 	<!--// Snippet -->
-	<section>
+	<section class="snippet">
 		<!--// Snippet intro -->
 		<div>
 			<h2>
@@ -22,17 +22,17 @@
 				Untitled
 				{% endif %}
 			</h2>
-			<p>By {{ snippet.author.username }}</p>
-			<p>Added on {{ snippet.time_added }}</p>
-			<p>Last time updated {{ snippet.time_updated }}</p>
+			<p><i class="fas fa-user"></i> {{ snippet.author.username }}</p>
+			<p><i class="fas fa-clock"></i> {{ snippet.time_added }}</p>
+			<p><i class="fas fa-edit"></i> {{ snippet.time_updated }}</p>
 		</div>
 
 
 		{% if snippet.author == user %}
 		<!--// Snippet options -->
-		<div>
-			<a href="{% url 'edit_snippet' snippet.id %}">Edit</a>
-			<a href="{% url 'delete_snippet' snippet.id %}">Delete</a>
+		<div class="modify-icons">
+			<a href="{% url 'edit_snippet' snippet.id %}" class="edit"><i class="fas fa-edit"></i></a>
+			<a href="{% url 'delete_snippet' snippet.id %}" class="delete"><i class="fas fa-trash-alt"></i></a>
 		</div>
 		{% endif %}
 
